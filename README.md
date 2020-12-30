@@ -4,13 +4,14 @@ Este script esta pensado en la instalación básica de algunos programas de desa
 
 Es necesario tener instalado NVM, para el funcionamiento de este.
 
-Podrá elegir entre instalar Visual Studio Code o Atom como editor de texto, se explicara en [Instalación](#-Instalación)
+Podrá elegir entre instalar Visual Studio Code o Atom como editor de texto, se explicara en [Instalación](#Instalación)
 
 ## Programas
 
 NodeJS,
 NPM,
 Nodemon,
+MongoDB,
 Visual Studo code o Atom.
 
 

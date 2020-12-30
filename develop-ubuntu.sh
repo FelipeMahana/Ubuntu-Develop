@@ -27,6 +27,20 @@ nvm install --lts
 
 npm install -g nodemon
 
+# Instalacion de base de datos
+
+#MongoDB
+#https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+#importacion public key y dependencias
+sudo apt install gnupg
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+# crea archivo mongodb
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+sudo apt update -y
+#instala los paquetes de mongodb
+sudo apt install -y mongodb-org
+
 # Elegir entre Atom o Visual Studio Code
 
 editor=$1
