@@ -6,6 +6,7 @@
 # https://linuxize.com/post/how-to-install-node-js-on-ubuntu-20-04/
 # https://linuxhandbook.com/if-else-bash/
 # https://gist.github.com/rachelhyman/b1f109155c9dafffe618
+# https://gorails.com/setup/ubuntu/20.04#ruby-rvm
 
 
 # SCRIPT INSTALACIÓN HERRAMIENTAS TRABAJO PARA UBUNTU 20.04
@@ -22,6 +23,49 @@ sudo apt update -y
 # Instalación de NodeJS y NPM con nvm
 
 nvm install --lts
+
+# Instalación de rbenv, Ruby, Ruby on Rails y PostgreSQL
+
+#Yarn y dependencias, Node.js se instala anteriormente 
+sudo apt install curl
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+#dependencias
+sudo apt install git-core zlib1g-dev build-essential libssl-dev libreadline-dev \
+libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev \
+software-properties-common libffi-dev yarn -y
+
+#rbenv en bash y zsh (agregar if)
+cd
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+#bash
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+#zsh
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
+exec $SHELL
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+#bash
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+#zsh
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.zshrc
+exec $SHELL
+#ruby
+rbenv install 3.0.0
+rbenv global 3.0.0
+ruby -v
+#bundler
+gem install bundler
+#
+rbenv rehash
+#rails
+gem search '^rails$' --all
+gem install rails -v 6.1.0
+#PostgreSQL
+sudo apt install postgresql postgresql-contrib libpq-dev -y
+sudo -u postgres createuser felipe -s
+
 
 # Instalacion de Nodemon con npm
 
@@ -40,6 +84,8 @@ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb
 sudo apt update -y
 #instala los paquetes de mongodb
 sudo apt install -y mongodb-org
+#Inicio de MongoDb despues de un reiniciado
+sudo systemctl enable mongod
 
 # Elegir entre Atom o Visual Studio Code
 

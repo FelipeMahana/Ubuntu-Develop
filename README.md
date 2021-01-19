@@ -12,6 +12,10 @@ NodeJS,
 NPM,
 Nodemon,
 MongoDB,
+Ruby,
+Ruby on Rails,
+PostgreSQL,
+Rbenv,
 Visual Studo code o Atom.
 
 
